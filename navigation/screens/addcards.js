@@ -22,7 +22,7 @@ export default function addcards({ navigation }) {
         }
 
         setDoc(myDoc, docData)
-    
+
         //Handling promises
         .then(() => {
         //success
@@ -35,19 +35,31 @@ export default function addcards({ navigation }) {
     }
 
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center',  backgroundColor: '#302F2A',}}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center',  backgroundColor: '#302F2A', }}>
             <Text
                 onPress={() => navigation.navigate('Home')}
-                style={{ fontSize: 26, fontWeight: 'bold', color: 'white', }}> add a card</Text>
-            <TextInput placeholder='deck...' value={deckText} onChangeText={(text) => {setDeckText(text)}} />
-            <TextInput placeholder='front...' value={frontText} onChangeText={(text) => {setFrontText(text)}} />
-            <TextInput placeholder='back...' value={backText} onChangeText={(text) => {setBackText(text)}} />
-            <Button title='create' onPress={() => {CreateCard(deckText, frontText, backText)}} disabled={backText==''}/>
+                style={{ fontSize: 26, fontWeight: 'bold', color: 'white', paddingBottom: 80,  }}> add a card</Text>
+                <View style = {styles.flashcard}>
+            <TextInput style = {styles.flashcardt} placeholder='deck...' value={deckText} onChangeText={(text) => {setDeckText(text)}} />
+            <TextInput style = {styles.flashcardt} placeholder='front...' value={frontText} onChangeText={(text) => {setFrontText(text)}} />
+            <TextInput style = {styles.flashcardt }placeholder='back...' value={backText} onChangeText={(text) => {setBackText(text)}} />
+            <Button  title='create' onPress={() => {CreateCard(deckText, frontText, backText)}} disabled={backText==''}/>
+            </View>
         </View>
     );
 }
 
 
 const styles = StyleSheet.create({
-
+    flashcard:{
+        backgroundColor: '#3B63CC',
+        padding: 100,
+        paddingHorizontal: 150,
+    },
+    flashcardt:{
+        padding: 10,
+        color: 'white',
+        fontSize: 50,
+       
+    }
 });
